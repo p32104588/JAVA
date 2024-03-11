@@ -9,17 +9,6 @@ version = '0.0.1-SNAPSHOT'
 
 java {
 	sourceCompatibility = '21'
-	toolchain {
-        languageVersion.set(JavaLanguageVersion.of(21))
-    }
-
-    options.compilerArgs << '-parameters'
-}
-
-configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
 }
 
 repositories {
@@ -30,11 +19,9 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'com.h2database:h2'
 	runtimeOnly 'com.microsoft.sqlserver:mssql-jdbc'
 	implementation files('libs/mssql-jdbc-12.6.0.jre11.jar')
-	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
