@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -82,6 +83,35 @@ public class Getcontroller {
 	@ResponseStatus(HttpStatus.OK)
 	@GetMapping(value = "/Grade/{id}")
 	public List<modelgrade> getGradebyid(@PathVariable(name = "id") Integer id) {
+		// 使用 Grade 模型
+		List<modelgrade> gradeList = new ArrayList();
+		String sql = "SELECT name,score FROM [APITest].[dbo].[grade] where id = ?";
+        try(
+        	    Connection connection = ConnString.getConnection();
+        		PreparedStatement selectStatement = connection.prepareStatement(sql);
+        	)  {
+
+            // 設定參數值
+        	selectStatement.setInt(1, id);
+            ResultSet resultSet = selectStatement.executeQuery();
+
+            while (resultSet.next()) {
+            	modelgrade grade = new modelgrade();
+                grade.name = resultSet.getString("name");
+                grade.score = resultSet.getInt("score");
+                gradeList.add(grade);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } 
+
+		return gradeList;
+	}
+	
+	@ResponseStatus(HttpStatus.OK)
+	@GetMapping(value = "/Grade/getGradebyParamid")
+//	public List<modelgrade> getGradebyParamid(@RequestParam(name = "id",required = false , defaultValue = "0") Integer id) {
+	public List<modelgrade> getGradebyParamid(@RequestParam(name = "id") Integer id) {
 		// 使用 Grade 模型
 		List<modelgrade> gradeList = new ArrayList();
 		String sql = "SELECT name,score FROM [APITest].[dbo].[grade] where id = ?";
