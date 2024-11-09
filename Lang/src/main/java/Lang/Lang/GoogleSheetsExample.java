@@ -128,11 +128,11 @@ public class GoogleSheetsExample extends JFrame {
 		// 指定文件路径
 		String filePath = "excelID.txt";
 
-		// 检查文件是否存在
+		// 檢查文件是否存在
 		Path path = Paths.get(filePath);
 
 		if (Files.exists(path)) {
-			// 文件存在，读取文件内容
+			// 文件存在，讀取文件内容
 			try {
 				List<String> lines = Files.readAllLines(path);
 				for (String line : lines) {
@@ -140,17 +140,17 @@ public class GoogleSheetsExample extends JFrame {
 						spreadsheetId = line;
 				}
 			} catch (IOException e) {
-				System.out.println("读取文件时发生错误：" + e.getMessage());
+				System.out.println("讀取文件時發生錯誤：" + e.getMessage());
 			}
 		} else {
-			// 文件不存在，创建文件
-			System.out.println("文件不存在，正在创建...");
+			// 文件不存在則新增文件
+			System.out.println("文件不存在，正在新增");
 
 			try {
 				Files.createFile(path);
-				System.out.println("文件已创建：" + filePath);
+				System.out.println("文件已新增：" + filePath);
 			} catch (IOException ex) {
-				System.out.println("创建文件时发生错误：" + ex.getMessage());
+				System.out.println("新增錯誤：" + ex.getMessage());
 			}
 		}
 
@@ -215,7 +215,7 @@ public class GoogleSheetsExample extends JFrame {
 		JPanel textFieldsPanel = new JPanel();
 		textFieldsPanel.setLayout(new GridBagLayout());
 
-		// 添加三个 JLabel 和 JTextField
+		// 添加三個 JLabel 和 JTextField
 		JLabel label1 = new JLabel("分類 :");
 		JLabel label2 = new JLabel("外文 :");
 		JLabel label3 = new JLabel("中文 :");
@@ -225,11 +225,11 @@ public class GoogleSheetsExample extends JFrame {
 		JTextField textField2 = new JTextField(15);
 		JTextField textField3 = new JTextField(15);
 
-		// 设置首选大小
+		
 		textField2.setPreferredSize(new Dimension(150, 25));
 		textField3.setPreferredSize(new Dimension(150, 25));
 
-		// 设置空隙
+		
 		Insets Insets = new Insets(10, 10, 10, 10);
 
 		// 将 JLabel 和 JTextField 放在 textFieldsPanel 中
@@ -265,7 +265,7 @@ public class GoogleSheetsExample extends JFrame {
 		textFieldConstraints.insets = Insets;
 		textFieldsPanel.add(textField3, textFieldConstraints);
 
-		// 将 textFieldsPanel 放在 GridBagLayout 的下一个位置
+		// 將 textFieldsPanel 放在 GridBagLayout 的下一個位置
 		GridBagConstraints textFieldsPanelConstraints = new GridBagConstraints();
 		textFieldsPanelConstraints.gridx = 0;
 		textFieldsPanelConstraints.gridy = 1;
@@ -291,7 +291,7 @@ public class GoogleSheetsExample extends JFrame {
 
 		JButton btnNewButton = new JButton("新增");
 
-		// 将按钮直接放在南方
+		
 		GridBagConstraints buttonConstraints = new GridBagConstraints();
 		buttonConstraints.gridx = 0;
 		buttonConstraints.gridy = 2;
@@ -307,7 +307,7 @@ public class GoogleSheetsExample extends JFrame {
 		buttonConstraints.insets = Insets;
 		contentPane.add(label4, buttonConstraints);
 
-		// 隐藏 textFieldsPanel，初始状态下不可见
+		
 		textFieldsPanel.setVisible(false);
 
 		btnNewButton.addActionListener(new ActionListener() {
@@ -466,14 +466,14 @@ public class GoogleSheetsExample extends JFrame {
 
 	private void EnSheet(String lang) throws Exception{
 		String spreadsheetId = "";
-		// 指定文件路径
+		
 		String filePath = "excelID.txt";
 
-		// 检查文件是否存在
+		
 		Path path = Paths.get(filePath);
 
 		if (Files.exists(path)) {
-			// 文件存在，读取文件内容
+			
 			try {
 				List<String> lines = Files.readAllLines(path);
 				for (String line : lines) {
@@ -481,17 +481,17 @@ public class GoogleSheetsExample extends JFrame {
 						spreadsheetId = line;
 				}
 			} catch (IOException e) {
-				System.out.println("读取文件时发生错误：" + e.getMessage());
+				System.out.println("讀取錯誤：" + e.getMessage());
 			}
 		} else {
-			// 文件不存在，创建文件
-			System.out.println("文件不存在，正在创建...");
+			
+			System.out.println("新增文件...");
 
 			try {
 				Files.createFile(path);
-				System.out.println("文件已创建：" + filePath);
+				System.out.println("文件已新增：" + filePath);
 			} catch (IOException ex) {
-				System.out.println("创建文件时发生错误：" + ex.getMessage());
+				System.out.println("新增錯誤：" + ex.getMessage());
 			}
 		}
 
@@ -602,11 +602,11 @@ public class GoogleSheetsExample extends JFrame {
 			// 指定文件路径
 			String filePath = "excelID.txt";
 
-			// 检查文件是否存在
+			
 			Path path = Paths.get(filePath);
 
 			if (Files.exists(path)) {
-				// 文件存在，读取文件内容
+				
 				try {
 					List<String> lines = Files.readAllLines(path);
 					for (String line : lines) {
@@ -614,17 +614,17 @@ public class GoogleSheetsExample extends JFrame {
 							spreadsheetId = line;
 					}
 				} catch (IOException e) {
-					System.out.println("读取文件时发生错误：" + e.getMessage());
+					System.out.println("新增錯誤：" + e.getMessage());
 				}
 			} else {
 				// 文件不存在，创建文件
-				System.out.println("文件不存在，正在创建...");
+				System.out.println("新增中...");
 
 				try {
 					Files.createFile(path);
-					System.out.println("文件已创建：" + filePath);
+					System.out.println("文件已新增：" + filePath);
 				} catch (IOException ex) {
-					System.out.println("创建文件时发生错误：" + ex.getMessage());
+					System.out.println("新增錯誤：" + ex.getMessage());
 				}
 			}
 
